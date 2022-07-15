@@ -1,8 +1,8 @@
-package com.epam.mjc.stage0;
+package com.epam.task.purchases;
 
 public abstract class AbstractPurchase implements Comparable<AbstractPurchase>{
-    protected Product product;
-    protected int purchasedNum;
+    protected final Product product;
+    protected final int purchasedNum;
 
     public AbstractPurchase(Product product, int purchasedNum) {
         this.product = product;
@@ -11,12 +11,17 @@ public abstract class AbstractPurchase implements Comparable<AbstractPurchase>{
 
     @Override
     public int compareTo(AbstractPurchase o) {
-        return Integer.compare(o.getCost(), this.getCost());
+        return Integer.compare(o.getCost().getValue(), this.getCost().getValue());
     }
 
-    public int getCost(){
-        return purchasedNum * product.getPrice().getValue()/100;
+    protected abstract Euro getFinalCost(Euro baseCost);
+
+    public Euro getCost(){
+        Euro baseCost = product.getPrice().mul(purchasedNum);
+        Euro finalCost = getFinalCost(baseCost);
+		return finalCost.round(RoundMethods.FLOOR, 2);
     }
+
 
     @Override
     public String toString() {

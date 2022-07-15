@@ -1,8 +1,8 @@
-package com.epam.mjc.stage0;
+package com.epam.task.purchases;
 
 public class Product {
-    private String name;
-    private Euro price;
+    private final String name;
+    private final Euro price;
 
     public Product(String name, Euro price) {
         this.name = name;

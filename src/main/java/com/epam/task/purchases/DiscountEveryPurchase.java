@@ -1,4 +1,4 @@
-package com.epam.mjc.stage0;
+package com.epam.task.purchases;
 
 public class DiscountEveryPurchase extends AbstractPurchase{
     private static final double DISCOUNT_PERCENTAGE = 0.1;
@@ -8,11 +8,9 @@ public class DiscountEveryPurchase extends AbstractPurchase{
     }
 
     @Override
-    public int getCost() {
-        return (int) ((1.0 - DISCOUNT_PERCENTAGE) * super.getCost());
+    protected Euro getFinalCost(Euro baseCost) {
+        return baseCost.mul(1 - DISCOUNT_PERCENTAGE, RoundMethods.ROUND, 0);
     }
-
-
 
     @Override
     public int compareTo(AbstractPurchase o) {

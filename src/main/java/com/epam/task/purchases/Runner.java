@@ -1,4 +1,4 @@
-package com.epam.mjc.stage0;
+package com.epam.task.purchases;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -47,5 +47,7 @@ public class Runner {
 
         System.out.println((search(purchases) == -1)? "No purchase with such sum":
                 "Index of purchase with sum 5.00 : " + search(purchases));
+
     }
+
 }

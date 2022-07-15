@@ -1,4 +1,4 @@
-package com.epam.mjc.stage0;
+package com.epam.task.purchases;
 
 public class DeliveryFeePurchase extends AbstractPurchase {
     private static final Euro DELIVERY_FEE = new Euro(400);
@@ -8,8 +8,8 @@ public class DeliveryFeePurchase extends AbstractPurchase {
     }
 
     @Override
-    public int getCost() {
-        return super.getCost() + DELIVERY_FEE.getValue()/100;
+    protected Euro getFinalCost(Euro baseCost) {
+        return baseCost.add(DELIVERY_FEE);
     }
 
     @Override
