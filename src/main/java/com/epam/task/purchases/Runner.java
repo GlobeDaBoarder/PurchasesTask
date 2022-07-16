@@ -2,17 +2,9 @@ package com.epam.task.purchases;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.WeakHashMap;
 
 public class Runner {
-    public static int search(AbstractPurchase[] purchases, Euro searchValue) {
-        Comparator<AbstractPurchase> comparator = AbstractPurchase::compareTo;
-
-        return Arrays.binarySearch(
-                purchases,
-                new DiscountIfMorePurchase(new Product(null, new Euro(searchValue)), 1),
-                comparator);
-    }
-
     public static void main(String[] args) {
 
         Product chocolateBar = new Product("Chocolate bar", new Euro(245));
@@ -23,30 +15,29 @@ public class Runner {
         Product gummy = new Product("gummy", new Euro(117));
 
 
-        AbstractPurchase[] purchases = new AbstractPurchase[]{
-                new DiscountEveryPurchase(chocolateBar, 3),
-                new DiscountEveryPurchase(iceCream, 2),
-                new DiscountIfMorePurchase(cupcake, 6),
-                new DiscountIfMorePurchase(proteinBar, 1),
-                new DeliveryFeePurchase(cookie, 8),
-                new DeliveryFeePurchase(gummy, 1)
-        };
+        PurchaseArray purchases = new PurchaseArray(
+                new AbstractPurchase[]{
+                        new DiscountEveryPurchase(chocolateBar, 3, new Euro(50)),
+                        new DiscountEveryPurchase(iceCream, 2, new Euro(40)),
+                        new DiscountIfMorePurchase(cupcake, 6, 0.10),
+                        new DiscountIfMorePurchase(proteinBar, 1, 0.15),
+                        new DeliveryFeePurchase(cookie, 8, new Euro(400)),
+                        new DeliveryFeePurchase(gummy, 2, new Euro(300))
+                }
+        );
 
-        for (AbstractPurchase p : purchases) {
-            System.out.println(p.toString());
-        }
+        purchases.printArr();
 
-        Arrays.sort(purchases);
-        System.out.println("\n");
+        purchases.sort();
 
-        for (AbstractPurchase p : purchases) {
-            System.out.println(p.toString());
-        }
+        System.out.println();
 
-        System.out.println("Minimal cost = " + purchases[purchases.length - 1].getCost());
+        purchases.printArr();
 
-        System.out.println((search(purchases, new Euro(500)) == -1)? "No purchase with such sum":
-                "Index of purchase with sum 5.00 : " + search(purchases, new Euro(500)));
+        System.out.println("Minimal cost = " + purchases.getMinimalCost());
+
+        System.out.println((purchases.search(new Euro(500)) < 0)? "No purchase with such sum":
+                "Index of purchase with sum 5.00 : " + purchases.search(new Euro(500)));
 
     }
 

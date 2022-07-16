@@ -11,7 +11,7 @@ public abstract class AbstractPurchase implements Comparable<AbstractPurchase>{
 
     @Override
     public int compareTo(AbstractPurchase o) {
-        return Integer.compare(o.getCost().getValue(), this.getCost().getValue());
+        return o.getCost().compareTo(this.getCost());
     }
 
     protected abstract Euro getFinalCost(Euro baseCost);
@@ -25,7 +25,7 @@ public abstract class AbstractPurchase implements Comparable<AbstractPurchase>{
 
     @Override
     public String toString() {
-        return product.getName() + ';' + product.getPrice().getValue()/100 + '.' + product.getPrice().getValue()%100 + ';' +  purchasedNum;
+        return this.getClass().getSimpleName() + ";" + product.toString() + ";" +  purchasedNum + ";" + this.getCost().toString();
     }
 
 }

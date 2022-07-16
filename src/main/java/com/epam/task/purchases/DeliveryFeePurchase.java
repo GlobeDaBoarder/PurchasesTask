@@ -1,19 +1,15 @@
 package com.epam.task.purchases;
 
 public class DeliveryFeePurchase extends AbstractPurchase {
-    private static final Euro DELIVERY_FEE = new Euro(400);
+    private final Euro deliveryFee;
 
-    public DeliveryFeePurchase(Product product, int purchasedNum) {
+    public DeliveryFeePurchase(Product product, int purchasedNum, Euro deliveryFee) {
         super(product, purchasedNum);
+        this.deliveryFee = deliveryFee;
     }
 
     @Override
     protected Euro getFinalCost(Euro baseCost) {
-        return baseCost.add(DELIVERY_FEE);
-    }
-
-    @Override
-    public int compareTo(AbstractPurchase o) {
-        return super.compareTo(o);
+        return baseCost.add(deliveryFee);
     }
 }

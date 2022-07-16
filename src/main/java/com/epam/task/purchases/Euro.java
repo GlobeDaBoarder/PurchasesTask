@@ -8,15 +8,11 @@ public class Euro implements Comparable<Euro>{
     }
 
     public Euro(int euros, int cents){
-        this.value = euros*100 + cents;
+        this(euros*100 + cents);
     }
 
     public Euro(Euro euro){
-        this.value = euro.value;
-    }
-
-    public int getValue() {
-        return value;
+        this(euro.value);
     }
 
     public Euro add(Euro euro){
@@ -32,10 +28,10 @@ public class Euro implements Comparable<Euro>{
     }
 
     public Euro mul(double x, RoundMethods roundMethod, int d){
-        return new Euro(roundMethod.round(value * x, roundMethod, d));
+        return new Euro(roundMethod.round(value * x, d));
     }
     public Euro round(RoundMethods roundMethod, int d){
-        return new Euro(roundMethod.round(value, roundMethod, d));
+        return new Euro(roundMethod.round(value, d));
     }
 
 
@@ -46,13 +42,23 @@ public class Euro implements Comparable<Euro>{
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
+
+        if (!(o instanceof Euro)) {
+            return false;
+        }
+
+        Euro other = (Euro) o;
+
+        return this.value == other.value;
     }
 
 
     @Override
     public int compareTo(Euro o) {
-        return Integer.compare(this.value, o.value);
+        return this.value - o.value;
     }
 }

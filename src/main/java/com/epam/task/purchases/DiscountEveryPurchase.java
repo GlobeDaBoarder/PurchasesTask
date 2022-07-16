@@ -1,19 +1,15 @@
 package com.epam.task.purchases;
 
 public class DiscountEveryPurchase extends AbstractPurchase{
-    private static final double DISCOUNT_PERCENTAGE = 0.1;
+    private final Euro discount;
 
-    public DiscountEveryPurchase(Product product, int purchasedNum) {
+    public DiscountEveryPurchase(Product product, int purchasedNum, Euro discount) {
         super(product, purchasedNum);
+        this.discount = discount;
     }
 
     @Override
     protected Euro getFinalCost(Euro baseCost) {
-        return baseCost.mul(1 - DISCOUNT_PERCENTAGE, RoundMethods.ROUND, 0);
-    }
-
-    @Override
-    public int compareTo(AbstractPurchase o) {
-        return super.compareTo(o);
+        return baseCost.sub(discount);
     }
 }

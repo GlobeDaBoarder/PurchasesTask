@@ -11,13 +11,8 @@ public class Product {
 
     @Override
     public String toString() {
-        return name + ';' + price;
+        return name + ';' + price.toString();
     }
-
-    public String getName() {
-        return name;
-    }
-
 
     public Euro getPrice() {
         return price;
