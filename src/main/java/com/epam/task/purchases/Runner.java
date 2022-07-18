@@ -1,9 +1,5 @@
 package com.epam.task.purchases;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.WeakHashMap;
-
 public class Runner {
     public static void main(String[] args) {
 

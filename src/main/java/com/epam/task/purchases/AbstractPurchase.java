@@ -9,11 +9,6 @@ public abstract class AbstractPurchase implements Comparable<AbstractPurchase>{
         this.purchasedNum = purchasedNum;
     }
 
-    @Override
-    public int compareTo(AbstractPurchase o) {
-        return o.getCost().compareTo(this.getCost());
-    }
-
     protected abstract Euro getFinalCost(Euro baseCost);
 
     public Euro getCost(){
@@ -22,6 +17,25 @@ public abstract class AbstractPurchase implements Comparable<AbstractPurchase>{
 		return finalCost.round(RoundMethods.FLOOR, 2);
     }
 
+    @Override
+    public int compareTo(AbstractPurchase o) {
+        return o.getCost().compareTo(this.getCost());
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        if (!(obj instanceof AbstractPurchase)) {
+            return false;
+        }
+
+        AbstractPurchase other = (AbstractPurchase) obj;
+
+        return this.product.equals(other.product) && this.purchasedNum == other.purchasedNum;
+    }
 
     @Override
     public String toString() {

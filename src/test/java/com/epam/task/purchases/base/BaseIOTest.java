@@ -8,7 +8,7 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class BaseIOTest {
+public abstract class BaseIOTest {
     protected final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     protected final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
     protected final PrintStream originalOut = System.out;

@@ -10,6 +10,6 @@ public class DiscountEveryPurchase extends AbstractPurchase{
 
     @Override
     protected Euro getFinalCost(Euro baseCost) {
-        return baseCost.sub(discount);
+        return baseCost.sub(discount.mul(purchasedNum));
     }
 }

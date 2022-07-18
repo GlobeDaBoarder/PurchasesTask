@@ -40,4 +40,24 @@ public class PurchaseArray {
         }
         return res.toString();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        if (!(obj instanceof PurchaseArray)) {
+            return false;
+        }
+
+        PurchaseArray other = (PurchaseArray) obj;
+
+        for (int i = 0 ; i < this.purchases.length; i++){
+            if(!this.purchases[i].equals(other.purchases[i]))
+                return  false;
+        }
+
+        return true;
+    }
 }

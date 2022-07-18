@@ -14,6 +14,21 @@ public class Product {
         return name + ';' + price.toString();
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        if (!(obj instanceof Product)) {
+            return false;
+        }
+
+        Product other = (Product) obj;
+
+        return this.price.equals(other.price) && this.name.equals(other.name);
+    }
+
     public Euro getPrice() {
         return price;
     }
