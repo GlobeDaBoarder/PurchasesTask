@@ -11,7 +11,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return name + ';' + price.toString();
+        return name + ';' + price;
     }
 
     @Override
