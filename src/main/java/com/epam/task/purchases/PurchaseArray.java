@@ -53,11 +53,6 @@ public class PurchaseArray {
 
         PurchaseArray other = (PurchaseArray) obj;
 
-        for (int i = 0 ; i < this.purchases.length; i++){
-            if(!this.purchases[i].equals(other.purchases[i]))
-                return  false;
-        }
-
-        return true;
+        return  Arrays.equals(this.purchases, other.purchases);
     }
 }

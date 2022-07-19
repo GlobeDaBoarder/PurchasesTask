@@ -18,4 +18,9 @@ public class DiscountIfMorePurchase extends AbstractPurchase {
 
         return baseCost;
     }
+
+    @Override
+    protected String additionalToString() {
+        return this.discountPercentage + ";";
+    }
 }

@@ -37,9 +37,14 @@ public abstract class AbstractPurchase implements Comparable<AbstractPurchase>{
         return this.product.equals(other.product) && this.purchasedNum == other.purchasedNum;
     }
 
+    protected String additionalToString(){
+        return "";
+    }
+
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + ";" + product.toString() + ";" +  purchasedNum + ";" + this.getCost().toString();
+        return this.getClass().getSimpleName() + ";" + product.toString() + ";" +  purchasedNum + ";"
+                + additionalToString() + this.getCost().toString();
     }
 
 }

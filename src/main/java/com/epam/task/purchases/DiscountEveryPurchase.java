@@ -12,4 +12,9 @@ public class DiscountEveryPurchase extends AbstractPurchase{
     protected Euro getFinalCost(Euro baseCost) {
         return baseCost.sub(discount.mul(purchasedNum));
     }
+
+    @Override
+    protected String additionalToString() {
+        return this.discount + ";";
+    }
 }

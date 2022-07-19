@@ -12,4 +12,9 @@ public class DeliveryFeePurchase extends AbstractPurchase {
     protected Euro getFinalCost(Euro baseCost) {
         return baseCost.add(deliveryFee);
     }
+
+    @Override
+    protected String additionalToString() {
+        return this.deliveryFee + ";";
+    }
 }

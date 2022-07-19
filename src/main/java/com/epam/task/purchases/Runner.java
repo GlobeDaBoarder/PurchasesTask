@@ -32,8 +32,9 @@ public class Runner {
 
         System.out.println("Minimal cost = " + purchases.getMinimalCost());
 
-        System.out.println((purchases.search(new Euro(500)) < 0)? "No purchase with such sum":
-                "Index of purchase with sum 5.00 : " + purchases.search(new Euro(500)));
+        int searchInd = purchases.search(new Euro(500));
+        System.out.println(( searchInd < 0)? "No purchase with such sum":
+                "Index of purchase with sum 5.00 : " + searchInd);
 
     }
 
