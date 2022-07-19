@@ -13,7 +13,7 @@ public class DiscountIfMorePurchase extends AbstractPurchase {
     @Override
     protected Euro getFinalCost(Euro baseCost) {
         if (purchasedNum >= QUANTITY_TO_DISCOUNT){
-            return baseCost.mul(1 - discountPercentage/100, RoundMethods.ROUND, 0);
+            baseCost = baseCost.mul(1 - discountPercentage/100, RoundMethods.ROUND, 0);
         }
 
         return baseCost;
