@@ -47,4 +47,6 @@ public abstract class AbstractPurchase implements Comparable<AbstractPurchase>{
                 + additionalToString() + this.getCost().toString();
     }
 
+
+
 }
