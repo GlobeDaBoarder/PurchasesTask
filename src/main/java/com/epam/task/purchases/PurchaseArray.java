@@ -15,12 +15,9 @@ public class PurchaseArray {
     }
 
     public int search( Euro searchValue) {
-        Comparator<AbstractPurchase> comparator = AbstractPurchase::compareTo;
-
         return Arrays.binarySearch(
                 purchases,
-                new DiscountIfMorePurchase(new Product(null, new Euro(searchValue)), 1, 0.10),
-                comparator);
+                new DiscountIfMorePurchase(new Product(null, new Euro(searchValue)), 1, 0.10));
     }
 
     public Euro getMinimalCost(){
